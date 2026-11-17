@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import WorkoutLibrary from "@/components/WorkoutLibrary";
 import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <Navbar />
         </nav>
         <Hero/>
+          <WorkoutLibrary />
       <main className="min-h-[60vh]" min-h-60vh>{children}</main>
       
       <Footer/>

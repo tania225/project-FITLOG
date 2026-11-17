@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="bg-[#111111] text-white px-5 md:px-12 lg:px-20 py-16 md:py-24">
+    <section className="bg-zinc-800 text-white px-5 md:px-12 lg:px-20 py-16 md:py-24">
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
