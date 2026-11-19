@@ -136,10 +136,10 @@ export default function WorkoutDetailsPage() {
 
         {/* Main Details */}
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-10">
 
         {/* Workout Image */}
-<div className="rounded-xl overflow-hidden bg-[#191c22] h-87.5 md:h-120 relative">
+<div className="rounded-xl overflow-hidden bg-[#191c22] h-full min-h-137.5 sm:h-130px relative">
   <Image
     src={workout.image}
     alt={workout.name}
@@ -152,8 +152,15 @@ export default function WorkoutDetailsPage() {
           {/* Workout Information */}
 
           <div>
+ <h1 className="text-3xl md:text-4xl font-bold uppercase mb-4">
+              {workout.name}
+            </h1>
 
-            <div className="flex gap-2 mb-5 flex-wrap">
+            <p className="text-gray-400  mb-4">
+              {workout.description}
+            </p>
+            
+              <div className="flex gap-2 mb-5 flex-wrap">
               {workout.muscleGroups?.map((muscle) => (
                 <span
                   key={muscle}
@@ -164,71 +171,83 @@ export default function WorkoutDetailsPage() {
               ))}
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold uppercase mb-4">
-              {workout.name}
-            </h1>
-
-            <p className="text-gray-400 leading-7 mb-7">
-              {workout.description}
-            </p>
-
-            <div className="grid grid-cols-2 gap-4">
-
-              <div className="bg-[#191c22] p-5 rounded-lg">
-                <Clock className="text-lime-400 mb-3" />
-                <p className="text-gray-400 text-sm">Duration</p>
-                <h3 className="text-xl font-bold">{workout.duration} min</h3>
-              </div>
-
-              <div className="bg-[#191c22] p-5 rounded-lg">
-                <Flame className="text-lime-400 mb-3" />
-                <p className="text-gray-400 text-sm">Calories Burned</p>
-                <h3 className="text-xl font-bold">{workout.caloriesBurned} kcal</h3>
-              </div>
-
-              <div className="bg-[#191c22] p-5 rounded-lg">
-                <Star className="text-lime-400 mb-3" />
-                <p className="text-gray-400 text-sm">Rating</p>
-                <h3 className="text-xl font-bold">{workout.rating}/5</h3>
-              </div>
-
-              <div className="bg-[#191c22] p-5 rounded-lg">
-                <Dumbbell className="text-lime-400 mb-3" />
-                <p className="text-gray-400 text-sm">Equipment</p>
-                <h3 className="text-lg font-bold">{workout.equipment}</h3>
-              </div>
-
-            </div>
-
-            <div className="border-t border-gray-800 mt-7 pt-6 space-y-4">
-
+            <div className="grid grid-cols gap-4">
+              {/* no 1 */}
               <div className="flex justify-between">
-                <span className="text-gray-400">Difficulty</span>
+                <span className="text-gray-400">Equipment</span>
+                <span>{workout.equipment}</span>
+              </div>
+               <div className="flex justify-between">
+ <span className="text-gray-400">Difficulty</span>
                 <span>{workout.difficulty}</span>
               </div>
-
-              <div className="flex justify-between">
+               <div className="flex justify-between">
                 <span className="text-gray-400">Sets</span>
                 <span>{workout.sets}</span>
               </div>
 
               <div className="flex justify-between">
+                <span className="text-gray-400">Duration</span>
+                <span>{workout.duration}</span>
+              </div>
+
+<div className="flex justify-between">
+                <span className="text-gray-400">Calories Burned</span>
+                <span>{workout.caloriesBurned}</span>
+              </div>
+            
+<div className="flex justify-between">
+                <span className="text-gray-400">Rating</span>
+                <span>{workout.rating}</span>
+              </div>
+              
+              
+               <div className="flex justify-between">
                 <span className="text-gray-400">Reps</span>
                 <span>{workout.reps}</span>
               </div>
 
             </div>
 
+                   {/* Instructions */}
+
+        <section className="mt-16">
+
+          <h3 className="text-2xl font mb-7">
+            WORKOUT INSTRUCTIONS
+          </h3>
+
+          <div className="grid md:grid-cols gap-2">
+
+            {workout.instructions?.map((step, index) => (
+              <div
+                key={index}
+                className="bg-[#191c22] rounded-lg p-6 flex gap-5"
+              >
+                <span >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <p className="text-gray-300 leading-7">
+                  {step}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+        </section>
+
             {/* Action Buttons */}
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+            <div className="flex w-fit sm:flex-row gap-6 mt-8">
 
               <button
                 onClick={handleAddPlan}
                 disabled={added}
                 className="btn flex-1 bg-lime-400 hover:bg-lime-300 text-black border-none"
               >
-                {added ? <Check size={18} /> : <Plus size={18} />}
+                {added ? <Check size={16} /> : <Plus size={16} />}
                 {added ? "Added to Plan" : "Add to Today's Plan"}
               </button>
 
@@ -246,34 +265,7 @@ export default function WorkoutDetailsPage() {
 
         </div>
 
-        {/* Instructions */}
-
-        <section className="mt-16">
-
-          <h2 className="text-2xl font-bold mb-7">
-            WORKOUT INSTRUCTIONS
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-5">
-
-            {workout.instructions?.map((step, index) => (
-              <div
-                key={index}
-                className="bg-[#191c22] rounded-lg p-6 flex gap-5"
-              >
-                <span className="text-lime-400 font-bold text-xl">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <p className="text-gray-300 leading-7">
-                  {step}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-        </section>
+      
 
       </div>
     </main>

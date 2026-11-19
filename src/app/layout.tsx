@@ -31,8 +31,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <nav>
       <Navbar />
         </nav>
-        <Hero/> 
-           <WorkoutLibrary />
+        {/* <Hero/>  */}
+           {/* <WorkoutLibrary /> */}
       <main className="min-h-[60vh]" >{children}</main>
       
       <Footer/>
