@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getWorkouts } from "@/library/api";
 import Link from "next/link";
+import Image from "next/image";
 
 const WorkoutLibrary = () => {
   const [workouts, setWorkouts] = useState<any[]>([]);
@@ -43,16 +44,16 @@ const WorkoutLibrary = () => {
 
         {/* Section Heading */}
         <div className="mb-10">
-          <p className="text-lime-400 text-sm tracking-widest mb-3">
+          {/* <p className="text-lime-400 text-sm tracking-widest mb-3">
             FIND YOUR NEXT CHALLENGE
-          </p>
+          </p> */}
 
           <h2 className="text-3xl md:text-4xl font-bold">
-            Workout Library
+            THE LIBRARY
           </h2>
 
           <p className="text-gray-400 mt-3">
-            Explore workouts and build your training routine.
+            Twelve lifts covering every  major muscle group.
           </p>
         </div>
 
@@ -68,11 +69,13 @@ const WorkoutLibrary = () => {
             >
 
               {/* Image */}
-              <div className="h-52 overflow-hidden">
-                <img
+              <div className=" relative h-52 overflow-hidden">
+                <Image
                   src={workout.image}
                   alt={workout.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
                 />
               </div>
 

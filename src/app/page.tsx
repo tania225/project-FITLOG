@@ -1,9 +1,10 @@
-import Image from "next/image";
 import WorkoutLibrary from "@/components/WorkoutLibrary";
-export default function Home() {
+// import Hero from "@/components/Hero";
+export default function WorkoutsPage() {
   return (
-    <div> 
-      
-       </div>
+    <main className="min-h-screen bg-[#101114]">
+      {/* <Hero/> */}
+      <WorkoutLibrary />
+    </main>
   );
 }

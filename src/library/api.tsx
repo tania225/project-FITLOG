@@ -23,3 +23,18 @@ export const getWorkouts = async () => {
     return await response.json();
   }
 };
+export const getWorkoutById = async (id: string) => {
+  try {
+    const response = await fetch(`${PRIMARY_API}/${id}`);
+
+    if (!response.ok) throw new Error("Primary API failed");
+
+    return await response.json();
+  } catch {
+    const response = await fetch(`${FALLBACK_API}/${id}`);
+
+    if (!response.ok) throw new Error("Both APIs failed");
+
+    return await response.json();
+  }
+};
